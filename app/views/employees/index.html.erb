@@ -33,8 +33,8 @@
         <%= render @employees %>
       </tbody>
     </table>
-    <%== pagy_nav @pagy %>
+    <div class="d-flex justify-content-center mt-4">
+      <%== pagy_nav @pagy %>
+    </div>
   <% end %>
-
-  <%= link_to "New employee", new_employee_path, class:"btn btn-dark rounded-pill my-3 float-end" %>
 </div>
