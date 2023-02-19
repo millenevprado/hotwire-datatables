@@ -3,7 +3,10 @@
 
   <h1>Employees</h1>
 
-  <%= form_with url: "", method: :get, data: { turbo_frame: "employees" } do |f| %>
+  <%= form_with url: "",
+                method: :get,
+                data: { turbo_frame: "employees", turbo_action: "advance" } do |f|
+  %>
     Show    <%= f.select :count,
                 options_for_select([10, 25, 50, 100], selected: params[:count]),{},
                 { onchange: "this.form.requestSubmit()" }
