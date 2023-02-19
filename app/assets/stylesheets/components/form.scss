@@ -1,0 +1,25 @@
+.filter-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+
+  select {
+    background-color: transparent !important;
+    border: 1px solid #0D1117 !important;
+    border-radius: 0.8rem !important;
+    option {
+      border-radius: 0.8rem !important;
+    }
+  }
+
+  input {
+    border: none !important;
+    border-bottom: 1px solid #0D1117 !important;
+
+    &:active,
+    &:focus {
+      outline: none !important;
+    }
+  }
+}

@@ -6,16 +6,16 @@
   <%= form_with url: "",
                 method: :get,
                 data: { turbo_frame: "employees", turbo_action: "advance" },
-                class:"mb-3" do |f|
+                class:"filter-form mb-3" do |f|
   %>
-    Show    <%= f.select :count,
-                options_for_select([10, 25, 50, 100], selected: params[:count]),{},
-                { onchange: "this.form.requestSubmit()" }
-            %>
-    Search  <%= f.search_field :query,
-                value: params[:query],
-                oninput: "this.form.requestSubmit()"
-            %>
+    <span>Show:</span> <%= f.select :count,
+                           options_for_select([10, 25, 50, 100], selected: params[:count]), {},
+                           { onchange: "this.form.requestSubmit()" }
+                        %>
+    <span class="ms-3">Search:</span> <%= f.search_field :query,
+                                          value: params[:query],
+                                          oninput: "this.form.requestSubmit()"
+                                      %>
   <% end %>
 
   <%= turbo_frame_tag "employees" do %>
@@ -36,5 +36,5 @@
     <%== pagy_nav @pagy %>
   <% end %>
 
-  <%= link_to "New employee", new_employee_path, class:"btn btn-secondary rounded-pill mt-3" %>
+  <%= link_to "New employee", new_employee_path, class:"btn btn-dark rounded-pill my-3 float-end" %>
 </div>
