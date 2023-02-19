@@ -1,11 +1,12 @@
-<div class="container p-5">
+<div class="container py-4">
   <p style="color: green"><%= notice %></p>
 
-  <h1>Employees</h1>
+  <h1 class="text-center mb-4">Employees</h1>
 
   <%= form_with url: "",
                 method: :get,
-                data: { turbo_frame: "employees", turbo_action: "advance" } do |f|
+                data: { turbo_frame: "employees", turbo_action: "advance" },
+                class:"mb-3" do |f|
   %>
     Show    <%= f.select :count,
                 options_for_select([10, 25, 50, 100], selected: params[:count]),{},
@@ -35,5 +36,5 @@
     <%== pagy_nav @pagy %>
   <% end %>
 
-  <%= link_to "New employee", new_employee_path %>
+  <%= link_to "New employee", new_employee_path, class:"btn btn-secondary rounded-pill mt-3" %>
 </div>
