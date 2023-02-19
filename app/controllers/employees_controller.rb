@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   def index
     @employees = Employee.all
     @employees = @employees.search(params[:query]) if params[:query].present?
-    @pagy, @employees = pagy @employees, items: params.fetch(:count, 10)
+    @pagy, @employees = pagy @employees.reorder(sort_column => sort_direction), items: params.fetch(:count, 10)
   end
 
   def show; end
@@ -45,5 +45,13 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:name, :position, :office, :age, :start_date)
+  end
+
+  def sort_column
+    %w[name position office age start_date].include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
