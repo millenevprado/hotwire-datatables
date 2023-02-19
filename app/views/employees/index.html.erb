@@ -21,11 +21,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"><%= sort_link_to "Name", :name %></th>
-          <th scope="col"><%= sort_link_to "Position", :position %></th>
-          <th scope="col"><%= sort_link_to "Office", :office %></th>
-          <th scope="col"><%= sort_link_to "Age", :age %></th>
-          <th scope="col"><%= sort_link_to "Start Date", :start_date %></th>
+          <th scope="col"><%= sort_link_to "Name", :name, data: { turbo_action: "advance" } %></th>
+          <th scope="col"><%= sort_link_to "Position", :position, data: { turbo_action: "advance" } %></th>
+          <th scope="col"><%= sort_link_to "Office", :office, data: { turbo_action: "advance" } %></th>
+          <th scope="col"><%= sort_link_to "Age", :age, data: { turbo_action: "advance" } %></th>
+          <th scope="col"><%= sort_link_to "Start Date", :start_date, data: { turbo_action: "advance" } %></th>
         </tr>
       </thead>
       <tbody>
