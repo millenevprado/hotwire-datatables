@@ -3,6 +3,8 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    @employees = @employees.search(params[:query]) if params[:query].present?
+    @pagy, @employees = pagy @employees
   end
 
   def show; end
