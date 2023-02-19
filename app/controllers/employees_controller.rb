@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
   def index
     @employees = Employee.all
     @employees = @employees.search(params[:query]) if params[:query].present?
-    @pagy, @employees = pagy @employees
+    @pagy, @employees = pagy @employees, items: params.fetch(:count, 10)
   end
 
   def show; end

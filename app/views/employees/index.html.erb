@@ -1,16 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="container p-5">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Employees</h1>
+  <h1>Employees</h1>
 
-<div id="employees">
-  <% @employees.each do |employee| %>
-    <%= render employee %>
-    <p>
-      <%= link_to "Show this employee", employee %>
-    </p>
+  <%= form_with url: "", method: :get do |f| %>
+    Show <%= f.select :count,
+             options_for_select([10, 25, 50, 100], selected: params[:count]),{},
+             { onchange: "this.form.requestSubmit()" }
+          %>
+    Search <%= f.search_field :query,
+               value: params[:query],
+               oninput: "this.form.requestSubmit()"
+            %>
   <% end %>
+  <div id="employees">
+    <% @employees.each do |employee| %>
+      <%= render employee %>
+      <p>
+        <%= link_to "Show this employee", employee %>
+      </p>
+    <% end %>
+  </div>
+
+  <%== pagy_nav @pagy %>
+
+  <%= link_to "New employee", new_employee_path %>
 </div>
-
-<%== pagy_nav @pagy %>
-
-<%= link_to "New employee", new_employee_path %>
